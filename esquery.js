@@ -253,8 +253,9 @@
         function nthChild(node, ancestry, idxFn) {
             var parent = ancestry[0], listProp, keys, i, l, idx;
             if (!parent) { return false; }
+            if (parent.type === 'ExperimentalSpreadProperty')
+                parent.type = 'SpreadElement'
             keys = estraverse.VisitorKeys[parent.type];
-            if (!keys) { return false; }
             for (i = 0, l = keys.length; i < l; ++i) {
                 listProp = parent[keys[i]];
                 if (isArray(listProp)) {
