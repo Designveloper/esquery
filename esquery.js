@@ -1,4 +1,5 @@
 /* vim: set sw=4 sts=4 : */
+/* eslint-disable */
 (function () {
 
     var estraverse = require('estraverse');
@@ -253,6 +254,7 @@
             var parent = ancestry[0], listProp, keys, i, l, idx;
             if (!parent) { return false; }
             keys = estraverse.VisitorKeys[parent.type];
+            if (!keys) { return false; }
             for (i = 0, l = keys.length; i < l; ++i) {
                 listProp = parent[keys[i]];
                 if (isArray(listProp)) {
